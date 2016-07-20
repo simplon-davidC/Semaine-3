@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <script>
+  var username;
+  var password;
+  function name() {
+    username = prompt("Choisissez un Pseudo");
+    if(username === null){
+      return;
+    };
+    checkLength(username);
+    checkAtSign(username);
+  };
+  function pass() {
+    password = prompt("Choisissez un Mot de Passe");
+    checkLength(password);
+  };
+  function checkLength(n = username) {
+    if(n == undefined || n.length < 5){
+      alert("il y a moins de 5 caractères");
+      n == username ? name() : pass();
+    } else {
+      return;
+    };
+  };
+  function checkAtSign(n){
+    if(n.indexOf("@") == -1){
+      alert("Email invalide");
+      name();
+    } else {
+      return;
+    };
+  };
+  function signIn(u, p){
+    var userInput = prompt("Quel est ton Pseudo? ?");
+    var passInput = prompt("Tape ton Mot de Passe ?");
+    if(u == userInput && p == passInput){
+      alert("Bienvenue");
+    } else {
+      alert("Mauvais Pseudo ou Mot de Passe");
+      signIn(username, password);
+    }
+  };
+  name();
+  pass();
+  signIn(username, password);
+  
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+
+	var num = 1; /* variable pour les nombre 123456789 */
+	var sharp = "#"; /* variable pour le # */
+	var alphabet = ["abcdefghijklmnopqrstuvwxyz"]; /* variable pour l'alphabet */
+ 
+function Loop(param, n){ /* la fonction qui lance la loop */
+  var write = ""; /* variable pour écrire ce qu'il y a dans les "" des variables précédentes */
+  for(i = 0; i < n; i++) /* boucle utilisée */
+  { 
+    write += param; /* écrit les paramètres de la fonction Loop */
+    Array.isArray(param) ? document.write(write.slice(0, i) + "<br/>") : document.write(write + "<br/>");
+    if(!isNaN(param)) { param++ };
+  };
+}
+Loop("#", 10); /* écrit 10 lignes # avec +1 à chaque fois */
+Loop(num, 10); /* écrit de 0 à 10 en rajoutant un chiffre à chaque ligne */
+Loop(alphabet, alphabet[0].length + 1); /* écrit l'alphabet avec la lettre suivante en plus à chaque fois */
+
+
+
+
+</script>
+</body>
+</html>

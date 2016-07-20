@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <script>
+  // Nombre de réponses correctes consécutives
+  var correctAnswers = 0;
+  // Array de nombre pour le calcul de l'ordi
+  var numberArray = [];
+  // Array des opérateurs
+  var operators = ["+", "-", "*", "/"];
+  // Array du calcul
+  var calcArray = [];
+  // Le calcul
+  var calcul;
+  // Résultat
+  var result = 0;
+  // Ajout des nombres aléatoires à calculer
+  function computerNumbers(){
+    numberArray.push(Math.round(Math.random() * 10));
+    numberArray.push(Math.round(Math.random() * 10));
+    if(correctAnswers >= 2){
+      for(i = 0; i < correctAnswers / 2; i++){
+        numberArray.push(Math.round(Math.random() * 10));
+      };
+    };
+    calc();
+  };
+  // Fonction du calcul de l'ordi
+  function calc(){
+    var numberLength = numberArray.length;
+    for(i = 0; i < numberLength; i++){
+      calcArray.push(numberArray[i]);
+      if(i != numberLength - 1){
+        calcArray.push(operators[Math.floor(Math.random() * operators.length)]);
+      };
+    };
+    calcul = calcArray.join(" ");
+    var hello = eval(calcul).toFixed(2);
+    result = Number(hello);
+    game();
+  };
+  // Le calcul que l'utilisateur doit faire
+  function game(){
+    var player = prompt("Combien font " + calcul + " ? (2 chiffres après la virgule)");
+    if(player == result){
+      alert("Bien joué !");
+      correctAnswers += 1;
+      playAgain();
+    } else {
+      alert("Faux! la réponse était" + result);
+      correctAnswers = 0;
+      playAgain();
+    };
+  };
+  // On demande si le joueur veut rejouer
+  function playAgain(){
+    if(confirm("Rejouer ?")){
+      reset();
+      computerNumbers();
+    } else {
+      return;
+    };
+  };
+  // On reset le calcul
+  function reset(){
+    numberArray = [];
+    calcArray = [];
+    calcul = "";
+    result = 0;
+  };
+  computerNumbers();
+  </script>
+
+</body>
+
+</html>
